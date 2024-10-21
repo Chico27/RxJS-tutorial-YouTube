@@ -1,0 +1,1 @@
+ng s --host=0 --port 4201

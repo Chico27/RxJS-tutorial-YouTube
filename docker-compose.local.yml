@@ -1,0 +1,17 @@
+services:
+  rxjs-tutorial:
+    container_name: rxjs-web
+    build:
+      context: ./docker-angular
+      dockerfile: Dockerfile
+    # command: 'sh /sh/start.sh'
+    ports:
+      - 4201:4201
+    volumes:
+      - ./docker-angular/sh:/sh/
+      - ./docker-angular/angular-project:/usr/local/angular-project
+      # - angular_node_modules:/usr/local/optamo2_web/node_modules
+    tty: true
+
+volumes:
+  angular_node_modules:
