@@ -10,7 +10,7 @@ services:
     volumes:
       - ./docker-angular/sh:/sh/
       - ./docker-angular/angular-project:/usr/local/angular-project
-      # - angular_node_modules:/usr/local/optamo2_web/node_modules
+      - angular_node_modules:/usr/local/optamo2_web/node_modules
     tty: true
 
 volumes:

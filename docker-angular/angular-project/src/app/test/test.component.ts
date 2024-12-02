@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, from, Subject } from 'rxjs';
+import { interval, of, fromEvent, combineLatest } from 'rxjs';
+import { map, filter, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-test',
@@ -10,27 +11,41 @@ import { Observable, of, from, Subject } from 'rxjs';
 })
 export class TestComponent implements OnInit {
   ngOnInit() {
-    const customObservable = new Observable(observer => {
-      observer.next(1);
-      observer.next(2);
-      observer.complete();
-    });
-    customObservable.subscribe(value => console.log(value));
+        // const timer$ = interval(1000); // 1秒ごとに数値を発行するObservable
+        // timer$.subscribe(value => console.log(`Timer tick: ${value}`));
 
-    const numbers = of(1, 2, 3, 4, 5);
-    numbers.subscribe(value => console.log(value));
 
-    const array = from([10, 20, 30]);
-    array.subscribe(value => console.log(value));
+        // const numbers$ = of(1, 2, 3, 4, 5); // 配列をObservableに変換
 
-    const cold = from([1, 2, 3]);
-    cold.subscribe(value => console.log('Subscriber 1:', value));
-    cold.subscribe(value => console.log('Subscriber 2:', value));
+        // numbers$
+        //   .pipe(map(value => value * 2)) // 各値に2を掛ける
+        //   .subscribe(result => console.log(`Mapped value: ${result}`));
 
-    const hot = new Subject();
-    hot.subscribe(value => console.log('Subscriber 1:', value));
-    hot.subscribe(value => console.log('Subscriber 2:', value));
-    hot.next(1);
-    hot.next(2);
-  }
+
+        // const numbers$ = of(1, 2, 3, 4, 5);
+
+        // numbers$
+        //   .pipe(filter(value => value % 2 === 0)) // 偶数のみ通過
+        //   .subscribe(result => console.log(`Filtered value: ${result}`));
+
+
+        // const clicks$ = of('Mock Click'); // モックされたクリックイベント
+        // const timer$ = interval(1000); // 1秒ごとのタイマー
+
+        // combineLatest([clicks$, timer$])
+        //   .subscribe(([click, timer]) => {
+        //     console.log(`Click event:`, click);
+        //     console.log(`Timer value: ${timer}`);
+        //   });
+
+        // const numbers$ = of(1, 2, 3, 4, 5);
+
+        // numbers$
+        //   .pipe(
+        //     tap(value => console.log(`Before map: ${value}`)), // デバッグログ
+        //     map(value => value * 2), // 値を変換
+        //     tap(value => console.log(`After map: ${value}`))  // デバッグログ
+        //   )
+        //   .subscribe(result => console.log(`Final value: ${result}`));
+    }
 }
