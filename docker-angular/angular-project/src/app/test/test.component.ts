@@ -63,7 +63,7 @@ export class TestComponent implements OnInit {
       //   )
       //   .subscribe(result => console.log(result));
 
-      const numbers$ = of(1, 2, 3);
+      // const numbers$ = of(1, 2, 3);
 
       // numbers$
       //   .pipe(
