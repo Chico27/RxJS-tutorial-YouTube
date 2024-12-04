@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, of, fromEvent, combineLatest } from 'rxjs';
-import { map, filter, tap } from 'rxjs/operators';
+import { interval, of, fromEvent, combineLatest, take } from 'rxjs';
+import { map, filter, tap, mergeMap, switchMap, delay, concatMap, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-test',
@@ -11,41 +11,69 @@ import { map, filter, tap } from 'rxjs/operators';
 })
 export class TestComponent implements OnInit {
   ngOnInit() {
-        // const timer$ = interval(1000); // 1秒ごとに数値を発行するObservable
-        // timer$.subscribe(value => console.log(`Timer tick: ${value}`));
+      // const numbers$ = of(1, 2, 3, 4, 5);
+
+      // numbers$
+      //   .pipe(map(value => value * 2))
+      //   .subscribe(result => console.log(`Mapped value: ${result}`));
 
 
-        // const numbers$ = of(1, 2, 3, 4, 5); // 配列をObservableに変換
+      // const numbers$ = of(1, 2, 3);
 
-        // numbers$
-        //   .pipe(map(value => value * 2)) // 各値に2を掛ける
-        //   .subscribe(result => console.log(`Mapped value: ${result}`));
+      // numbers$
+      //   .pipe(mergeMap(value => of(`${value}: processed`)))
+      //   .subscribe(result => console.log(result));
+
+      // const numbers$ = of(1, 2, 3);
+
+      // numbers$
+      //   .pipe(switchMap(value => of(`Processed: ${value}`).pipe(delay(1000))))
+      //   .subscribe(result => console.log(result));
+
+      // const numbers$ = of(1, 2, 3);
+
+      // numbers$
+      //   .pipe(concatMap(value => of(`Processed: ${value}`).pipe(delay(1000))))
+      //   .subscribe(result => console.log(result));
 
 
-        // const numbers$ = of(1, 2, 3, 4, 5);
+      // if (typeof document !== 'undefined') {
+      //   const searchInput = document.getElementById('search')!;
 
-        // numbers$
-        //   .pipe(filter(value => value % 2 === 0)) // 偶数のみ通過
-        //   .subscribe(result => console.log(`Filtered value: ${result}`));
+      //   fromEvent(searchInput, 'input')
+      //     .pipe(
+      //       debounceTime(1000), // 入力の遅延
+      //       switchMap(event => {
+      //         const query = (event.target as HTMLInputElement)!.value;
+      //         return of(`Searching for: ${query}`); // モック検索結果
+      //       })
+      //     )
+      //     .subscribe(result => console.log(result));
+      // }
 
+      // const numbers$ = of(1, 2, 3);
 
-        // const clicks$ = of('Mock Click'); // モックされたクリックイベント
-        // const timer$ = interval(1000); // 1秒ごとのタイマー
+      // numbers$
+      //   .pipe(
+      //     mergeMap(value =>
+      //       of(`Processed: ${value}`).pipe(
+      //         delay(Math.random() * 1000) // 処理時間をランダム化
+      //       )
+      //     )
+      //   )
+      //   .subscribe(result => console.log(result));
 
-        // combineLatest([clicks$, timer$])
-        //   .subscribe(([click, timer]) => {
-        //     console.log(`Click event:`, click);
-        //     console.log(`Timer value: ${timer}`);
-        //   });
+      const numbers$ = of(1, 2, 3);
 
-        // const numbers$ = of(1, 2, 3, 4, 5);
+      // numbers$
+      //   .pipe(
+      //     concatMap(value =>
+      //       of(`Processed: ${value}`).pipe(
+      //         delay(Math.random() * 1000) // 処理時間をランダム化
+      //       )
+      //     )
+      //   )
+      //   .subscribe(result => console.log(result));
 
-        // numbers$
-        //   .pipe(
-        //     tap(value => console.log(`Before map: ${value}`)), // デバッグログ
-        //     map(value => value * 2), // 値を変換
-        //     tap(value => console.log(`After map: ${value}`))  // デバッグログ
-        //   )
-        //   .subscribe(result => console.log(`Final value: ${result}`));
-    }
+  }
 }
